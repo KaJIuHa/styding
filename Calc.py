@@ -1,27 +1,58 @@
 def calculation(expression):
     operator_1, operator_2 = expression[1], expression[3]
-    num_1, num_2, num_3 = float(expression[0]), float(expression[2]), float(expression[4])
+    num_1, num_2, num_3 = float(int(expression[0])), float(int(expression[2])), float(int(expression[4]))
     if operator_1 == '+' and operator_2 == '+':
         result = add(num_1, num_2, num_3)
         print(result)
+
     if operator_1 == "+" and operator_2 == "-":
         result = add(num_1, num_2, num_3 * -1)
         print(result)
+
+    if operator_1 == "+" and operator_2 == "/":
+        result = div(num_2, num_3) + num_1
+        print(result)
+
     if operator_1 == "-" and operator_2 == "-":
         result = minus(num_1, num_2, num_3)
         print(result)
+
+    if operator_1 == "-" and operator_2 == "/":
+        result = num_1 - div(num_2, num_3)
+        print(result)
+
     if operator_1 == "*" and operator_2 == "*":
         result = multi(num_1, num_2) * num_3
         print(result)
+
     if operator_1 == "*" and operator_2 == "+":
         result = multi(num_1, num_2) + num_3
         print(result)
+
     if operator_1 == "*" and operator_2 == "-":
         result = multi(num_1, num_2) - num_3
         print(result)
+
     if operator_1 == "*" and operator_2 == "/":
         result = multi(num_1, num_2) / num_3
         print(result)
+
+    if operator_1 == "/" and operator_2 == "/":
+        result = div(num_1,num_2) / num_3
+        print(result)
+
+    if operator_1 == "/" and operator_2 == "*":
+        result = div(num_1, num_2) * num_3
+        print(result)
+
+    if operator_1 == "/" and operator_2 == "-":
+        result = div(num_1, num_2) - num_3
+        print(result)
+
+    if operator_1 == "/" and operator_2 == "+":
+        result = div(num_1, num_2) + num_3
+        print(result)
+
 
 
 def add(a, b, c=0):
@@ -62,10 +93,11 @@ def validate(expression: str) -> str:
 
 def run(example):
     run_calc = validate(example)
-    result = calculation(expression)
-    print(result)
+    calculation(run_calc)
+
 
 
 if __name__ == "__main__":
     enter = input("Введите математическое выражение: ")
     run(enter)
+
