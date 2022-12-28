@@ -11,7 +11,16 @@ def calculation(expression):
         result = minus(num_1, num_2, num_3)
         print(result)
     if operator_1 == "*" and operator_2 == "*":
-        result = multi(num_1, num_2, num_3)
+        result = multi(num_1, num_2) * num_3
+        print(result)
+    if operator_1 == "*" and operator_2 == "+":
+        result = multi(num_1, num_2) + num_3
+        print(result)
+    if operator_1 == "*" and operator_2 == "-":
+        result = multi(num_1, num_2) - num_3
+        print(result)
+    if operator_1 == "*" and operator_2 == "/":
+        result = multi(num_1, num_2) / num_3
         print(result)
 
 
@@ -25,20 +34,25 @@ def minus(a, b, c=0):
     return res
 
 
-def multi(a, b, c=0):
-    res = a * b * c
-    print(res)
+def multi(a, b):
+    res = a * b
+    return res
 
 
+def div(a, b):
+    try:
+        res = a / b
 
-def div(a, b, c=0):
-    pass
+    except ZeroDivisionError:
+        print("Ошибка ввода,на ноль делить нельзя...")
+    return res
 
 
 def validate(expression: str) -> str:
-    """Интерпритация полученного выражения в удобный вид(исключение пробелов)"""
-    expression = expression.replace(" ", "")
+
     try:
+        """Интерпритация полученного выражения в удобный вид(исключение пробелов)"""
+        expression = expression.replace(" ", "")
         num_1, num_2, num_3 = float(expression[0]), float(expression[2]), float(expression[4])
 
     except ValueError:
@@ -48,10 +62,10 @@ def validate(expression: str) -> str:
 
 def run(example):
     run_calc = validate(example)
-    return run_calc
+    result = calculation(expression)
+    print(result)
 
 
 if __name__ == "__main__":
     enter = input("Введите математическое выражение: ")
     run(enter)
-
