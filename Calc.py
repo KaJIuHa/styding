@@ -6,15 +6,21 @@ def calculation(expression):
         print(result)
 
     if operator_1 == "+" and operator_2 == "-":
-        result = add(num_1, num_2, num_3 * -1)
+        result = add(num_1, num_2, key= num_3 * -1)
         print(result)
 
     if operator_1 == "+" and operator_2 == "/":
         result = div(num_2, num_3) + num_1
         print(result)
+    if operator_1 == "+" and operator_2 == "*":
+        result = multi(num_2, num_3) + num_1
+        print(result)
 
     if operator_1 == "-" and operator_2 == "-":
         result = minus(num_1, num_2, num_3)
+        print(result)
+    if operator_1 == "-" and operator_2 == "+":
+        result = minus(num_1, num_2, key=0 )
         print(result)
 
     if operator_1 == "-" and operator_2 == "/":
