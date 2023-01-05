@@ -136,8 +136,6 @@ def run(example):
 
 
 if __name__ == "__main__":
-    while True:
-        print("******Calculator ver. 1.0******")
-
-        enter = input("Введите математическое выражение: ")
+    print("******Calculator ver. 1.0******")
+    while (enter := input("Введите математическое выражение(для выхода оставь пустым): ")):
         run(enter)
