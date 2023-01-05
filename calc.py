@@ -20,7 +20,47 @@ def calculation(operators: tuple, values: tuple):
             result = add(num_1, temp)
 
     if op_1 == '-':
-        pass
+        if op_2 == '+':
+            temp = minus(num_1, num_2)
+            result = add(temp, num_3)
+        elif op_2 == '-':
+            result = minus(num_1, num_2, num_3)
+        elif op_2 == '*':
+            temp = multi(num_2, num_3)
+            result = minus(num_1, temp)
+        elif op_2 == '/':
+            temp = div(num_2, num_3)
+            if temp is None:
+                return -1
+            result = minus(num_1, temp)
+
+    if op_1 == '*':
+        if op_2 == '*':
+            result = multi(num_1, num_2, num_3)
+        elif op_2 == '+':
+            temp = multi(num_1, num_2)
+            result = add(temp, num_3)
+        elif op_2 == '-':
+            temp = multi(num_1, num_2)
+            result = minus(temp, num_3)
+        elif op_2 == '/':
+            temp = multi(num_1, num_2)
+            if temp is None:
+                return -1
+            result = div(temp, num_3)
+
+    if op_1 == '/':
+        if op_2 == '/':
+            result = div(num_1, num_2, num_3)
+        elif op_2 == '*':
+            temp = div(num_1, num_2)
+            result = multi(temp, num_3)
+        elif op_2 == '+':
+            temp = div(num_1, num_2)
+            result = minus(temp, num_3)
+        elif op_2 == '-':
+            temp = div(num_1, num_2)
+            result = minus(temp, num_3)
 
     print(result)
 
@@ -96,5 +136,8 @@ def run(example):
 
 
 if __name__ == "__main__":
-    enter = input("Введите математическое выражение: ")
-    run(enter)
+    while True:
+        print("******Calculator ver. 1.0******")
+
+        enter = input("Введите математическое выражение: ")
+        run(enter)
